@@ -3,10 +3,10 @@
 ## Rules
 * Two players; Each player has 99 points in total.
 * In each round:
-    * First player input a number.
+    * First player input a number (integer, 0~available points).
         * If the number is between 0~9, it shows **black**; if it's >= 10, it shows **white**.
         * First player's indicator shows the rest of points falls within one of the range: 0-19, 20-39, 40-59, 60-79, 80-99.
-    * Next player input a number
+    * Next player input a number (integer, 0~available points).
         * If the number is between 0~9, it shows **black**; if it's >= 10, it shows **white**.
         * Second player's indicator shows the rest of points falls within one of the range: 0-19, 20-39, 40-59, 60-79, 80-99.
     * Compare the input numbers from two players. Who inputs the larger number wins the round.

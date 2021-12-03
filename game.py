@@ -20,7 +20,9 @@ class Game:
 
     def startRound(self):
         self.round += 1
+        print("--------------------")
         print(f"##### Round {self.round} #####")
+        print("--------------------")
 
     def decideFirstPlayer(self):
         if (self.round == 1) or (self.win_history[-1] == 999):
@@ -36,7 +38,12 @@ class Game:
 
     def letFirstPlayerAct(self):
         print(f"{self.player_dict[self.first_player].name}'s turn:")
+        print(
+            f"Your total points are: {self.player_dict[self.first_player].points}",
+        )
         used_points = int(getpass.getpass("Use points:"))
+        print("\033[A                                             \033[A")
+        print("\033[A                                             \033[A")
         self.player_dict[self.first_player].usePoints(used_points)
         self.player_used_points_dict[self.first_player].append(used_points)
         self.player_dict[self.first_player].displayLeftPointsIndicator()
@@ -44,7 +51,12 @@ class Game:
 
     def letSecondPlayerAct(self):
         print(f"{self.player_dict[self.second_player].name}'s turn:")
+        print(
+            f"Your total points are: {self.player_dict[self.second_player].points}",
+        )
         used_points = int(getpass.getpass("Use points:"))
+        print("\033[A                                             \033[A")
+        print("\033[A                                             \033[A")
         self.player_dict[self.second_player].usePoints(used_points)
         self.player_used_points_dict[self.second_player].append(used_points)
         self.player_dict[self.second_player].displayLeftPointsIndicator()

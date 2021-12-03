@@ -42,10 +42,27 @@ class Game:
         print(
             f"Your total points are: {self.player_dict[self.first_player].points}",
         )
-        used_points = int(getpass.getpass("Use points:"))
-        print("\033[A                                             \033[A")
-        print("\033[A                                             \033[A")
-        print("\033[A                                             \033[A")
+        while True:
+            print("Please use integer points below or equal to your available points.")
+            try:
+                used_points = int(getpass.getpass("Use integer points:"))
+                if used_points <= self.player_dict[self.second_player].points:
+                    break
+            except ValueError:
+                continue
+            finally:
+                print(
+                    "\033[A                                                            \033[A",
+                )
+                print(
+                    "\033[A                                                            \033[A",
+                )
+        print(
+            "\033[A                                                            \033[A",
+        )
+        print(
+            "\033[A                                                            \033[A",
+        )
         self.player_dict[self.first_player].usePoints(used_points)
         self.player_used_points_dict[self.first_player].append(used_points)
         self.player_dict[self.first_player].displayLeftPointsIndicator()
@@ -57,10 +74,27 @@ class Game:
         print(
             f"Your total points are: {self.player_dict[self.second_player].points}",
         )
-        used_points = int(getpass.getpass("Use points:"))
-        print("\033[A                                             \033[A")
-        print("\033[A                                             \033[A")
-        print("\033[A                                             \033[A")
+        while True:
+            print("Please use integer points below or equal to your available points.")
+            try:
+                used_points = int(getpass.getpass("Use integer points:"))
+                if used_points <= self.player_dict[self.second_player].points:
+                    break
+            except ValueError:
+                continue
+            finally:
+                print(
+                    "\033[A                                                            \033[A",
+                )
+                print(
+                    "\033[A                                                            \033[A",
+                )
+        print(
+            "\033[A                                                            \033[A",
+        )
+        print(
+            "\033[A                                                            \033[A",
+        )
         self.player_dict[self.second_player].usePoints(used_points)
         self.player_used_points_dict[self.second_player].append(used_points)
         self.player_dict[self.second_player].displayLeftPointsIndicator()
@@ -102,15 +136,16 @@ class Game:
             print(self.win_mapping[2])
         if self.win_history.count(1) == self.win_history.count(2):
             print(self.win_mapping[999])
+        print(
+            f"Final score: {self.player_dict[1].name} : {self.player_dict[2].name} = {self.win_history.count(1)} : {self.win_history.count(2)}",
+        )
         for i in range(self.round):
             print("----------------")
-            print(f"Round {i+1}: {self.win_history[i]}")
+            print(f"Round {i+1}: {self.win_mapping[self.win_history[i]]}")
             print(
-                f"""{self.player_dict[self.first_player_history[i]].name}:
-                {self.player_used_points_dict[self.first_player_history[i]][i]}""",
+                f"""{self.player_dict[self.first_player_history[i]].name}: {self.player_used_points_dict[self.first_player_history[i]][i]}""",
             )
             print(
-                f"""{self.player_dict[self.second_player_history[i]].name}:
-                {self.player_used_points_dict[self.second_player_history[i]][i]}""",
+                f"""{self.player_dict[self.second_player_history[i]].name}: {self.player_used_points_dict[self.second_player_history[i]][i]}""",
             )
         exit()

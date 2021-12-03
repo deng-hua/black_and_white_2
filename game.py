@@ -38,10 +38,12 @@ class Game:
 
     def letFirstPlayerAct(self):
         print(f"{self.player_dict[self.first_player].name}'s turn:")
+        input("Press Enter to continue...")
         print(
             f"Your total points are: {self.player_dict[self.first_player].points}",
         )
         used_points = int(getpass.getpass("Use points:"))
+        print("\033[A                                             \033[A")
         print("\033[A                                             \033[A")
         print("\033[A                                             \033[A")
         self.player_dict[self.first_player].usePoints(used_points)
@@ -51,10 +53,12 @@ class Game:
 
     def letSecondPlayerAct(self):
         print(f"{self.player_dict[self.second_player].name}'s turn:")
+        input("Press Enter to continue...")
         print(
             f"Your total points are: {self.player_dict[self.second_player].points}",
         )
         used_points = int(getpass.getpass("Use points:"))
+        print("\033[A                                             \033[A")
         print("\033[A                                             \033[A")
         print("\033[A                                             \033[A")
         self.player_dict[self.second_player].usePoints(used_points)
@@ -75,8 +79,12 @@ class Game:
             win_number = self.second_player
         else:
             win_number = 999
-        print(f"Round {self.round}: {self.win_mapping[win_number]}")
+
         self.win_history.append(win_number)
+        print(f"Round {self.round}: {self.win_mapping[win_number]}")
+        print(
+            f"Current score: {self.player_dict[1].name} : {self.player_dict[2].name} = {self.win_history.count(1)} : {self.win_history.count(2)}",
+        )
 
     def checkGameResult(self):
         if (
